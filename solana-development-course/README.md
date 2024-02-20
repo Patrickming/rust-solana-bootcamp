@@ -20,7 +20,7 @@
 
 - QuickNode 写的[教学文章](https://www.quicknode.com/guides/welcome)也挺不错，可以参考进行阅读。
 
-- ，[Solana 中文开发教程](https://www.solanazh.com/)，[solana-co-learn](https://creatorsdao.github.io/solana-co-learn/)，这些也是很好的参考学习资料。
+- [Solana 中文开发教程](https://www.solanazh.com/)，[solana-co-learn](https://creatorsdao.github.io/solana-co-learn/)，这些也是很好的参考学习资料。
 
 - [Helius](https://www.helius.dev/blog) 的博客也是很好的学习资料。
 
