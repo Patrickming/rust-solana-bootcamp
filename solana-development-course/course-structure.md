@@ -40,7 +40,7 @@
       - [How to approach the Program Security unit](./zh-chs/security-intro.md)
       - [Signer authorization](./zh-chs/signer-auth.md)
       - [Owner checks](./zh-chs/owner-checks.md)
-      - [Account data matching]()
+      - [Account data matching](./zh-chs/account-data-matching.md)
       - [Reinitialization attacks]()
       - [Duplicate mutable accounts]()
       - [Type cosplay]()
