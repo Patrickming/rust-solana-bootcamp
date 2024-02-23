@@ -29,7 +29,7 @@
     - Anchor Program Development
       - [Intro to Anchor development](./zh-chs/intro-to-anchor.md)
       - [Intro to client-side Anchor development](./zh-chs/intro-to-anchor-frontend.md)
-      - [Anchor PDAs and accounts]()
+      - [Anchor PDAs and accounts](./zh-chs/anchor-pdas.md)
       - [Anchor CPIs and errors]()
     - Beyond the Basics
       - [Environment variables in Solana programs](./zh-chs/env-variables.md)
