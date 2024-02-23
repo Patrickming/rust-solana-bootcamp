@@ -38,7 +38,7 @@
       - [Rust procedural macros](./zh-chs/rust-macros.md)
     - Solana Program Security 
       - [How to approach the Program Security unit](./zh-chs/security-intro.md)
-      - [Signer authorization]()
+      - [Signer authorization](./zh-chs/signer-auth.md)
       - [Owner checks]()
       - [Account data matching]()
       - [Reinitialization attacks]()
