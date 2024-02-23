@@ -39,7 +39,7 @@
     - Solana Program Security 
       - [How to approach the Program Security unit](./zh-chs/security-intro.md)
       - [Signer authorization](./zh-chs/signer-auth.md)
-      - [Owner checks]()
+      - [Owner checks](./zh-chs/owner-checks.md)
       - [Account data matching]()
       - [Reinitialization attacks]()
       - [Duplicate mutable accounts]()
