@@ -42,7 +42,7 @@
       - [Owner checks](./zh-chs/owner-checks.md)
       - [Account data matching](./zh-chs/account-data-matching.md)
       - [Reinitialization attacks](./zh-chs/reinitialization-attacks.md)
-      - [Duplicate mutable accounts]()
+      - [Duplicate mutable accounts](./zh-chs/duplicate-mutable-accounts.md)
       - [Type cosplay]()
       - [Arbitrary CPIs]()
       - [Bump seed canonicalization]()
