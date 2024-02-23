@@ -43,7 +43,7 @@
       - [Account data matching](./zh-chs/account-data-matching.md)
       - [Reinitialization attacks](./zh-chs/reinitialization-attacks.md)
       - [Duplicate mutable accounts](./zh-chs/duplicate-mutable-accounts.md)
-      - [Type cosplay]()
+      - [Type cosplay](./zh-chs/type-cosplay.md)
       - [Arbitrary CPIs]()
       - [Bump seed canonicalization]()
       - [Closing accounts and revival attacks](./zh-chs/closing-accounts.md)
