@@ -41,7 +41,7 @@
       - [Signer authorization](./zh-chs/signer-auth.md)
       - [Owner checks](./zh-chs/owner-checks.md)
       - [Account data matching](./zh-chs/account-data-matching.md)
-      - [Reinitialization attacks]()
+      - [Reinitialization attacks](./zh-chs/reinitialization-attacks.md)
       - [Duplicate mutable accounts]()
       - [Type cosplay]()
       - [Arbitrary CPIs]()
