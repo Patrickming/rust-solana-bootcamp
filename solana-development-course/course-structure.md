@@ -9,7 +9,7 @@
       - [Create transactions on the Solana Network](./zh-chs/intro-to-writing-data.md)
       - [Create transactions for custom on-chain programs](./zh-chs/intro-to-custom-on-chain-programs.md)
       - [Interact with wallets](./zh-chs/interact-with-wallets.md)
-      - [Serialize program data]()
+      - [Serialize program data](./zh-chs/serialize-instruction-data.md)
       - [Deserialize program data](./zh-chs/deserialize-custom-data.md)
       - [Page, Order, and Filter program data]()
     - Client Interaction with Common Solana Programs
