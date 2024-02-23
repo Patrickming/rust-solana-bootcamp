@@ -37,7 +37,7 @@
       - [Versioned transactions and lookup tables]()
       - [Rust procedural macros](./zh-chs/rust-macros.md)
     - Solana Program Security 
-      - [How to approach the Program Security unit]()
+      - [How to approach the Program Security unit](./zh-chs/security-intro.md)
       - [Signer authorization]()
       - [Owner checks]()
       - [Account data matching]()
