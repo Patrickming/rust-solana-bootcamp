@@ -129,7 +129,7 @@ await requestAndConfirmAirdropIfRequired(
 
 ## 基础脚手架
 
-我们首先使用我们在[密码学简介](./intro-to-cryptography)中文件夹和 `.env` 文件。
+我们首先使用我们在[密码学简介](./intro-to-cryptography.md)中文件夹和 `.env` 文件。
 
 创建一个名为 `transfer.ts` 的文件：
 
