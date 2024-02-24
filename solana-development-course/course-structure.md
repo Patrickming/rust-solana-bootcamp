@@ -52,7 +52,7 @@
       - [Program architecture](./zh-chs/program-architecture.md)
       - [Oracles and oracle networks](./zh-chs/oracles.md)
       - [Verifiable randomness functions](./../assets/vrf-diagram.png)
-      - [Compressed NFTs]()
+      - [Compressed NFTs](./zh-chs/compressed-nfts.md)
       - [Generalized State Compression](./zh-chs/generalized-state-compression.md)
   - Solana Mobile Development 
     - Solana Mobile Development
