@@ -1,0 +1,62 @@
+- tracks
+  - Introduction
+    - [Introduction](#introduction-1)
+      - [Get started](./zh-chs/getting-started.md)
+  - dApp development
+    - Introduction to cryptography and Solana clients
+      - [Cryptography fundamentals](./zh-chs/intro-to-cryptography.md)
+      - [Read data from the network](./zh-chs/intro-to-reading-data.md)
+      - [Create transactions on the Solana Network](./zh-chs/intro-to-writing-data.md)
+      - [Create transactions for custom on-chain programs](./zh-chs/intro-to-custom-on-chain-programs.md)
+      - [Interact with wallets](./zh-chs/interact-with-wallets.md)
+      - [Serialize program data]()
+      - [Deserialize program data](./zh-chs/deserialize-custom-data.md)
+      - [Page, Order, and Filter program data]()
+    - Client Interaction with Common Solana Programs
+      - [Create tokens with the Token Program](./zh-chs/token-program.md)
+      - [Create Solana NFTs With Metaplex](./zh-chs/nfts-with-metaplex.md)
+  - On-chain program development
+    - Basic Solana Program Development
+      - [Hello World](./zh-chs/hello-world-program.md)
+      - [Handle Instruction Data](./zh-chs/deserialize-instruction-data.md)
+      - [State Management](./zh-chs/program-state-management.md)
+      - [Basic Security and Validation](./zh-chs/program-security.md)
+    - Intermediate Solana Program Development
+      - [Local Program Development](./zh-chs/local-setup.md)
+      - [Program Derived Addresses](./zh-chs/pda.md)
+      - [Cross Program Invocations](./zh-chs/cpi.md)
+      - [~~Program Testing~~](#program-testing)
+    - Anchor Program Development
+      - [Intro to Anchor development](./zh-chs/intro-to-anchor.md)
+      - [Intro to client-side Anchor development]()
+      - [Anchor PDAs and accounts]()
+      - [Anchor CPIs and errors]()
+    - Beyond the Basics
+      - [Environment variables in Solana programs](./zh-chs/env-variables.md)
+      - [Solana Pay]()
+      - [Versioned transactions and lookup tables]()
+      - [Rust procedural macros]()
+    - Solana Program Security 
+      - [How to approach the Program Security unit]()
+      - [Signer authorization]()
+      - [Owner checks]()
+      - [Account data matching]()
+      - [Reinitialization attacks]()
+      - [Duplicate mutable accounts]()
+      - [Type cosplay]()
+      - [Arbitrary CPIs]()
+      - [Bump seed canonicalization]()
+      - [Closing accounts and revival attacks](./zh-chs/closing-accounts.md)
+      - [PDA sharing]()
+    - Advanced Solana Programming 
+      - [Program architecture](./zh-chs/program-architecture.md)
+      - [Oracles and oracle networks](./zh-chs/oracles.md)
+      - [Verifiable randomness functions](./../assets/vrf-diagram.png)
+      - [Compressed NFTs]()
+      - [Generalized State Compression](./zh-chs/generalized-state-compression.md)
+  - Solana Mobile Development 
+    - Solana Mobile Development
+      - [Introduction to Solana Mobile]()
+      - [Exploring Mobile Wallet Adapter]()
+      - [Building Solana Mobile dApps with Expo]()
+
