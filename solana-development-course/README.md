@@ -12,7 +12,7 @@
 
 ## 学习指南
 
-- 课程的目录结构在 [course-structure.json](./course-structure.md)，请仔细查看并选择合适的文章进行阅读。
+- 课程的目录结构在[这里](./course-structure.md)，请仔细查看并选择合适的文章进行阅读。
 
 - 当然，建议大家直接阅读[英文原文](https://www.soldev.app/course)，也可以先阅读中文，然后在看英文原文，帮助更好理解。
 

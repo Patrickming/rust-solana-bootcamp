@@ -1,6 +1,6 @@
 - tracks
   - Introduction
-    - [Introduction](#introduction-1)
+    - Introduction
       - [Get started](./zh-chs/getting-started.md)
   - dApp development
     - Introduction to cryptography and Solana clients
@@ -28,18 +28,18 @@
       - [~~Program Testing~~](#program-testing)
     - Anchor Program Development
       - [Intro to Anchor development](./zh-chs/intro-to-anchor.md)
-      - [Intro to client-side Anchor development]()
-      - [Anchor PDAs and accounts]()
-      - [Anchor CPIs and errors]()
+      - [Intro to client-side Anchor development](./zh-chs/intro-to-anchor-frontend.md)
+      - [Anchor PDAs and accounts](./zh-chs/anchor-pdas.md)
+      - [Anchor CPIs and errors](./zh-chs/anchor-cpi.md)
     - Beyond the Basics
       - [Environment variables in Solana programs](./zh-chs/env-variables.md)
       - [Solana Pay]()
       - [Versioned transactions and lookup tables]()
-      - [Rust procedural macros]()
+      - [Rust procedural macros](./zh-chs/rust-macros.md)
     - Solana Program Security 
-      - [How to approach the Program Security unit]()
-      - [Signer authorization]()
-      - [Owner checks]()
+      - [How to approach the Program Security unit](./zh-chs/security-intro.md)
+      - [Signer authorization](./zh-chs/signer-auth.md)
+      - [Owner checks](./zh-chs/owner-checks.md)
       - [Account data matching]()
       - [Reinitialization attacks]()
       - [Duplicate mutable accounts]()
