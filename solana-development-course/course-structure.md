@@ -45,7 +45,7 @@
       - [Duplicate mutable accounts](./zh-chs/duplicate-mutable-accounts.md)
       - [Type cosplay](./zh-chs/type-cosplay.md)
       - [Arbitrary CPIs]()
-      - [Bump seed canonicalization]()
+      - [Bump seed canonicalization](./zh-chs/bump-seed-canonicalization.md)
       - [Closing accounts and revival attacks](./zh-chs/closing-accounts.md)
       - [PDA sharing]()
     - Advanced Solana Programming 
