@@ -216,7 +216,7 @@ console.log(`You can view your transaction on the Solana Explorer at:\nhttps://e
 
 在接下来的几节课程中，您将学习如何
 
-1. 从浏览器安全地发送交易，而不是通过运行脚本
+1. 使用浏览器安全地发起交易，而不是通过运行脚本
 2. 将自定义数据添加到您的指令中
 3. 反序列化链上数据
 
