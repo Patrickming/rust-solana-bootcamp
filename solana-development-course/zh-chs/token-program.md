@@ -191,7 +191,7 @@ async function buildCreateTokenAccountTransaction(
 
 ![ATAs are PDAs](../../assets/atas-are-pdas.svg)
 
-Similar to above, you can create an associated token account using the `spl-token` library's `createAssociatedTokenAccount` function.
+和上面类似, 你可以创建一个关联代币账户,通过使用 `spl-token` 库的 `createAssociatedTokenAccount` 函数。
 
 ```tsx
 const associatedTokenAccount = await createAssociatedTokenAccount(
