@@ -27,7 +27,7 @@ fn main() {
 
 2. 使用 `loop` 编写一个无限循环，当循环次数达到10次时，使用 `break`退出循环。
 ```Rust
-    let mut  count = 0; // 加上mut 在loop中
+    let mut  count = 0; // 加上mut 在loop中才能修改
     loop {
         if count == 10 {
             break;
