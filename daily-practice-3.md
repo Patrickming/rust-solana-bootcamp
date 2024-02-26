@@ -3,7 +3,7 @@
 ### 题目
 有一个简单的链表，
 其实现代码见：[https://github.com/lbc-team/rust-solana-bootcamp/blob/main/linkedlist.rs](https://github.com/lbc-team/rust-solana-bootcamp/blob/main/linkedlist.rs)，
-请完成以下几个方法的具体，使其能通过测试用例。
+请完成以下几个方法的具体实现，使其能通过测试用例。
 1. `fn is_empty(&self) -> bool` 方法
 2. `fn peek_mut(&mut self) -> Option<&mut T>` 方法
 3. `impl<T> Iterator for IntoIter<T> `中的 `next` 方法
