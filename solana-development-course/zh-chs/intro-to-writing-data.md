@@ -223,3 +223,28 @@ npx esrun transfer.ts (destination wallet address)
 ## 完成实验了吗？
 
 将您的代码推送到 GitHub 并[告诉我们您对本课程的看法](https://form.typeform.com/to/IPH0UGz7#answers-lesson=dda6b8de-9ed8-4ed2-b1a5-29d7a8a8b415)！
+
+
+
+# 注意
+
+1. 创建一个新的账户时（不管是api生成还是 Solana CLI生成） 是unfunded的账户 
+
+   1. 用`solana`来进行操作时 add `--allow-unfunded-recipient `
+
+      > root@xrm:/mnt/d/web3_code/solana_learn/solana# solana transfer -h
+      > solana-transfer
+      > Transfer funds between system accounts
+      >
+      > USAGE:
+      >     solana transfer [FLAGS] [OPTIONS] <RECIPIENT_ADDRESS> <AMOUNT>
+      >
+      > FLAGS:
+      >         **--allow-unfunded-recipient       Complete the transfer even if the recipient address is not funded**
+      >         --dump-transaction-message       Display the base64 encoded binary transaction message in sign-only 
+
+      ```
+      solana transfer --allow-unfunded-recipient 9w4egkmzj6Byop2iEA8ecP3m65zVn9ayNFFD1DNSdNPA 0.1
+      ```
+
+   2. 在操作之后就不是unfunded的了 就可以直接用教程代码进行转账

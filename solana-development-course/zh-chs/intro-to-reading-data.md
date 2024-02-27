@@ -4,6 +4,7 @@ objectives:
 - 了解帐户及其地址
 - 了解 SOL 和 lamports
 - 使用 web3.js 连接到 Solana 并读取帐户余额
+
 ---
 
 ## TL;DR
@@ -100,6 +101,7 @@ console.log(`✅ Finished!`)
 The balance of the account at CenYq6bDRB7p73EjsPEpiYN7uveyPUTdXkDkgUduboaN is 0.00114144 SOL
 ✅ Finished!
 ```
+
 ...就像这样，我们正在从 Solana 区块链中读取数据！
 
 # 实验
@@ -206,3 +208,22 @@ console.log(
 ## 完成实验了吗？
 
 将您的代码推送到 GitHub 并[告诉我们您对本课程的看法](https://form.typeform.com/to/IPH0UGz7#answers-lesson=8bbbfd93-1cdc-4ce3-9c83-637e7aa57454)！
+
+
+
+
+
+# 注意！
+
+1. connection的链接要改
+
+   在[Helius](https://dev.helius.xyz/dashboard/app)拿到链接换上
+
+   ![image-20240224222739312](D:\web3_code\rust-solana-bootcamp\solana-development-course\zh-chs\assets\image-20240224222739312.png)
+
+   ```ts
+   const connection = new Connection("https://devnet.helius-rpc.com/?api-key=6e693598-a890-40f8-8777-117c3deacf51", "confirmed");
+   ```
+
+   
+

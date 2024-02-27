@@ -2,6 +2,7 @@
 title: 使用自定义的链上程序
 objectives:
 - 为自定义的链上程序创建交易
+
 ---
 
 # TL;DR
@@ -39,6 +40,7 @@ export type TransactionInstructionCtorFields = {
 `keys` 数组需要更多解释。该数组中的每个对象代表一个在交易执行期间将被读取或写入的帐户。这意味着您需要了解正在调用的程序的行为，并确保提供数组中所有必要的帐户。
 
 根据 `AccountMeta` 的定义，
+
 ```typescript
 export type AccountMeta = {
   pubkey: PublicKey;
@@ -48,6 +50,7 @@ export type AccountMeta = {
 ```
 
 `keys` 数组中的每个对象必须包含以下内容：
+
 - `pubkey` - 帐户的公钥
 - `isSigner` - 一个布尔值，表示该帐户是否是交易的签名者
 - `isWritable` - 一个布尔值，表示在交易执行期间是否写入帐户
@@ -79,7 +82,7 @@ console.log(`✅ Success! Transaction signature is: ${signature}`);
 
 ## Solana 浏览器
 
-![Screenshot of Solana Explorer set to Devnet](../../assets/solana-explorer-devnet.png)
+![Screenshot of Solana Explorer set to Devnet](D:\web3_code\rust-solana-bootcamp\solana-development-course\zh-chs\assets\solana-explorer-devnet.png)
 
 区块链上的所有交易都可以在 [Solana Explorer](http://explorer.solana.com) 上公开查看。例如，您可以获取上例中 `sendAndConfirmTransaction()` 返回的签名，在 Solana Explorer 中搜索该签名，然后查看：
 
@@ -88,7 +91,7 @@ console.log(`✅ Success! Transaction signature is: ${signature}`);
 - 交易费
 - 还有更多！
 
-![Screenshot of Solana Explorer with details about a transaction](../../assets/solana-explorer-transaction-overview.png)
+![Screenshot of Solana Explorer with details about a transaction](D:\web3_code\rust-solana-bootcamp\solana-development-course\zh-chs\assets\solana-explorer-transaction-overview.png)
 
 # 实验 - 为 ping 计数器程序写交易
 
@@ -194,9 +197,10 @@ npx esrun send-ping-transaction.ts
 
 复制交易签名。打开浏览器并转到 [https://explorer.solana.com/?cluster=devnet](https://explorer.solana.com/?cluster=devnet)（URL 末尾的查询参数将确保您将在 Devnet 而不是 Mainnet 上查找交易）。将签名粘贴到 Solana Devnet 浏览器顶部的搜索栏中，然后按 Enter 键。您应该看到有关交易的所有详细信息。如果您一直滚动到底部，那么您将看到 `Program Logs`，其中显示程序已被 ping 的次数，包括您的 ping。
 
-![Screenshot of Solana Explorer with logs from calling the Ping program](../../assets/solana-explorer-ping-result.png) 
+![Screenshot of Solana Explorer with logs from calling the Ping program](D:\web3_code\rust-solana-bootcamp\solana-development-course\zh-chs\assets\solana-explorer-ping-result.png) 
 
 滚动浏览器并查看您所看到的内容：
+
 - **Account Input(s)** 将包括：
   - 您 `Fee Payer` 地址，因交易而被扣除一部分 lamports
   - ping 程序的程序地址 `Ah9K7dQ8EHaZqcAsgBW8w37yN2eAy3koFmUn4x3CJtod`
@@ -216,7 +220,7 @@ console.log(`You can view your transaction on the Solana Explorer at:\nhttps://e
 
 在接下来的几节课程中，您将学习如何
 
-1. 使用浏览器安全地发起交易，而不是通过运行脚本
+1. 从浏览器安全地发送交易，而不是通过运行脚本
 2. 将自定义数据添加到您的指令中
 3. 反序列化链上数据
 
@@ -230,3 +234,11 @@ console.log(`You can view your transaction on the Solana Explorer at:\nhttps://e
 ## 完成实验了吗？
 
 将您的代码推送到 GitHub 并[告诉我们您对本课程的看法](https://form.typeform.com/to/IPH0UGz7#answers-lesson=e969d07e-ae85-48c3-976f-261a22f02e52)！
+
+
+
+
+
+# 注意
+
+1. `dotenv`和 `LAMPORTS_PER_SOL` -> `web3. LAMPORTS_PER_SOL`

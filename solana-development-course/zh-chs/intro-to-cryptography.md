@@ -5,6 +5,7 @@ objectives:
 - 解释密钥对
 - 生成新的密钥对
 - 从 env 文件加载密钥对
+
 ---
 
 # TL;DR
@@ -44,7 +45,7 @@ objectives:
 
 ## Solana 使用公钥作为地址
 
-![Solana wallet addresses](../../assets/wallet-addresses.svg)
+![Solana wallet addresses](D:\web3_code\rust-solana-bootcamp\solana-development-course\zh-chs\assets\wallet-addresses.svg)
 
 参与 Solana 网络的人至少拥有一个密钥对。在 Solana：
 
@@ -200,3 +201,20 @@ npx esrun generate-keypair.ts
 ## 完成实验了吗？
 
 将您的代码推送到 GitHub 并[告诉我们您对本课程的看法](https://form.typeform.com/to/IPH0UGz7#answers-lesson=ee06a213-5d74-4954-846e-cba883bc6db1)！
+
+
+
+# 注意点！
+
+> 这里主要是根据教程在实际运行时报错 所以予以修改
+
+1. 需要下载dotenv 依赖
+
+2. 将`import "dotenv/config"` 替换为 
+
+   ```ts
+   import dotenv from 'dotenv';
+   dotenv.config();
+   ```
+
+3. 需要在`package.json` 中添加  `"type": "module"`
