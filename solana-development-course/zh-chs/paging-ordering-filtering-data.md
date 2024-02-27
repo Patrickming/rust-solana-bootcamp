@@ -295,7 +295,7 @@ static async prefetchAccounts(connection: web3.Connection, filters: AccountFilte
 
 我们要做的最后一件事来改善这个应用是添加一些基本的搜索功能。让我们给 `prefetchAccounts` 添加一个 `search` 参数，并重新配置函数的主体以使用它。
 
-我们可以使用 `getProgramAccounts的config` 参数的 `filters` 属性来根据特定数据过滤账户。 `title` 字段的偏移量是 2 ，但标题的前 4 个字节是标题的长度，所以字符串本身的实际偏移量是 6 。记住，字节需要被base 58编码，所以让我们安装并导入 `bs58` 。
+我们可以使用 `getProgramAccounts的config` 参数的 `filters` 属性来根据特定数据过滤账户。 `title` 字段的偏移量是 2 ，但标题的前 4 个字节是标题的长度，所以字符串本身的实际偏移量是 6 。记住，字节需要被 base 58 编码，所以让我们安装并导入 `bs58` 。
 
 ```tsx
 import bs58 from 'bs58'
@@ -409,20 +409,20 @@ return (
 
 就是这样！应用程序现在拥有了有序的评论、分页和搜索功能。
 
-这里有很多内容需要消化，但你已经做到了。如果你需要更多时间来理解这些概念，随时重读对你来说最具挑战性的部分，并且/或者看看 [代码](https://github.com/Unboxed-Software/solana-movie-frontend/tree/solution-paging-account-data).
+这里有很多内容需要消化，但你已经做到了。如果你需要更多时间来理解这些概念，随时重读对你来说最具挑战性的部分，并且/或者看看 [代码](https://github.com/Unboxed-Software/solana-movie-frontend/tree/solution-paging-account-data)。
 
 # 挑战
 
 现在轮到你自己尝试了。使用上一课的“学生介绍”应用程序，添加分页、按姓名字母顺序排序以及按姓名搜索的功能。
 
-[student-intros-frontend](../../assets/student-intros-frontend.png)
+![student-intros-frontend](../../assets/student-intros-frontend.png)
 
 1. 你可以从零开始构建这个项目，也可以下载起始代码。
 2. 通过预取没有数据的账户来向项目添加分页功能，然后仅在需要时获取每个账户的账户数据。
 3. 按姓名字母顺序对在应用中显示的账户进行排序。
 4. 添加按学生姓名搜索介绍的功能。
 
-这是具有挑战性的。 如果遇到困难, 请随时参考[答案](https://github.com/Unboxed-Software/solana-student-intros-frontend/tree/solution-paging-account-data)。完成了模块1！你的体验如何？欢迎[分享一些快速反馈](https://airtable.com/shrOsyopqYlzvmXSC?prefill_Module=Module%201), 这样我们就可以继续改进课程！
+这是具有挑战性的。 如果遇到困难, 请随时参考 [答案](https://github.com/Unboxed-Software/solana-student-intros-frontend/tree/solution-paging-account-data)。完成了模块1！你的体验如何？欢迎[分享一些快速反馈](https://airtable.com/shrOsyopqYlzvmXSC?prefill_Module=Module%201), 这样我们就可以继续改进课程！
 
 和往常一样，如果你愿意，可以在这些挑战中发挥创造力，并超越指示。
 
