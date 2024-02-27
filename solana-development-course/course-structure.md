@@ -45,14 +45,14 @@
       - [Duplicate mutable accounts](./zh-chs/duplicate-mutable-accounts.md)
       - [Type cosplay](./zh-chs/type-cosplay.md)
       - [Arbitrary CPIs]()
-      - [Bump seed canonicalization]()
+      - [Bump seed canonicalization](./zh-chs/bump-seed-canonicalization.md)
       - [Closing accounts and revival attacks](./zh-chs/closing-accounts.md)
-      - [PDA sharing]()
+      - [PDA sharing](./zh-chs/pda-sharing.md)
     - Advanced Solana Programming 
       - [Program architecture](./zh-chs/program-architecture.md)
       - [Oracles and oracle networks](./zh-chs/oracles.md)
       - [Verifiable randomness functions](./../assets/vrf-diagram.png)
-      - [Compressed NFTs]()
+      - [Compressed NFTs](./zh-chs/compressed-nfts.md)
       - [Generalized State Compression](./zh-chs/generalized-state-compression.md)
   - Solana Mobile Development 
     - Solana Mobile Development
