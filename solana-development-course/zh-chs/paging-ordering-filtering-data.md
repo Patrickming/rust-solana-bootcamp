@@ -428,4 +428,4 @@ return (
 
 ## 完成实验了吗？
 
-将你的代码推送到 GitHub，并 ![告诉我们你对这节课的看法](https://form.typeform.com/to/IPH0UGz7#answers-lesson=9342ad0a-1741-41a5-9f68-662642c8ec93)!
+将你的代码推送到 GitHub，并 [告诉我们你对这节课的看法](https://form.typeform.com/to/IPH0UGz7#answers-lesson=9342ad0a-1741-41a5-9f68-662642c8ec93)!
