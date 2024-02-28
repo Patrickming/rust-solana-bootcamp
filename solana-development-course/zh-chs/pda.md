@@ -46,7 +46,7 @@ let (pda, bump_seed) = Pubkey::find_program_address(&[user.key.as_ref(), user_in
 
 “种子”是在 `find_program_address` 函数中用于派生 PDA 的可选输入。例如，种子可以是任意组合的公钥、用户提供的输入或硬编码的值。一个 PDA 也可以仅使用程序 ID 而不需要额外的种子进行派生。然而，使用种子来查找我们的 PDA 允许我们创建程序可以拥有的任意数量的账户。
 
-虽然您作为开发者确定要传递给 `find_program_address` 函数的种子，但函数本身提供了一个额外的称为“bump 种子”。用于派生 PDA 的加密函数派生的密钥大约有 50% 的概率*位于* Ed25519 曲线上。为了确保结果*不在* Ed25519 曲线上，因此没有私钥，`find_program_address` 函数添加了一个称为碰撞种子（bump seed）的数字种子。
+您作为开发者需要传递给 `find_program_address` 函数种子，但其实这个函数本身也会提供一个额外的称为“bump 种子”。用于派生 PDA 的加密函数派生的密钥大约有 50% 的概率*位于* Ed25519 曲线上。为了确保结果*不在* Ed25519 曲线上，因此没有私钥，`find_program_address` 函数添加了一个称为碰撞种子（bump seed）的数字种子。
 
 该函数首先使用值 `255` 作为 bump 种子，然后检查输出是否为有效的 PDA。如果结果不是有效的 PDA，则函数将 bump 种子减 1 并重试（`254`，`253`等）。一旦找到有效的 PDA，函数返回 PDA 和用于派生 PDA 的 bump 种子。
 
