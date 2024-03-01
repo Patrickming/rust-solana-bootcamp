@@ -1,5 +1,5 @@
 ---
-title: 在 Solana 网络上创建交易
+ title: 在 Solana 网络上创建交易
 objectives:
 - 解释交易
 - 解释交易费用

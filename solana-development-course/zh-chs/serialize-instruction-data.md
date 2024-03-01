@@ -51,6 +51,8 @@ objectives:
 
 账户数组不仅仅是账户的公钥数组。数组中的每个对象都包含账户的公钥、它是否是交易的签名者以及它是否可写。在执行指令期间包括账户是否可写，使 runtime 能够促进智能合约的并行处理。因为您必须定义哪些账户是只读的，哪些是要写入的，runtime 可以确定哪些交易是不重叠的或只读的，并允许它们并发执行。要了解更多关于 Solana 运行时的信息，请查看这篇[博客文章](https://solana.com/news/sealevel-\--parallel-processing-thousands-of-smart-contracts)。
 
+> 博客链接失效了
+
 ### 指令数据
 
 向指令添加任意数据的能力确保了程序可以像 HTTP 请求的主体一样动态和灵活，可以适用于广泛的用例。
@@ -185,7 +187,19 @@ web3.sendAndConfirmTransaction(connection, transaction, [player]).then((txid) =>
 
 在我们开始之前，请先下载[初始代码](https://github.com/Unboxed-Software/solana-movie-frontend/tree/starter).
 
-该项目是一个相对简单的 `Next.js` 应用程序。它包括我们在钱包课程中创建的 `WalletContextProvider` ，一个用于展示电影评论的 `Card` 组件，一个用于以列表形式展示评论的 `MovieList` 组件，一个用于提交新评论的 `Form` 组件，以及一个包含 `Movie` 对象类定义的 `Movie.ts` 文件。
+该项目是一个相对简单的 `Next.js` 应用程序。
+
+它包括
+
+- 我们在钱包课程中创建的 `WalletContextProvider` ，
+
+- 一个用于展示电影评论的 `Card` 组件，
+
+- 一个用于以列表形式展示评论的 `MovieList` 组件，
+
+- 一个用于提交新评论的 `Form` 组件，
+
+- 一个包含 `Movie` 对象类定义的 `Movie.ts` 文件。
 
 请注意，目前，在你运行 `npm run dev` 时页面上显示的电影是模拟数据。在本课中，我们将专注于添加新的评论，但实际上我们将无法看到该评论被展示。在下一课中，我们将专注于从链上账户反序列化自定义数据。
 
@@ -219,11 +233,11 @@ export class Movie {
 }
 ```
 
-请记住，顺序很重要。如果这里属性的*顺序*与程序的结构不同，交易将会失败。
+请记住，顺序很重要。**如果这里属性的*顺序*与程序的结构不同，交易将会失败**。
 
 ### 3. 创建一个用于序列化数据的方法
 
-现在我们已经设置好了缓冲区布局，让我们在 `Movie` 中创建一个名为 `serialize()` 的方法，该方法将返回一个 `Buffer` ，其中包含 `Movie` 对象的属性，这些属性被编码到适当的布局中。
+现在我们已经设置好了缓冲区布局，让我们在 `Movie` 中创建一个名为 `serialize()` 的方法，该方法将返回一个 `Buffer` ，其中包含 `Movie` 对象的属性，这些属性被编码到适当的布局中。目的是得到了一个序列化后的Movie对象
 
 ```tsx
 import * as borsh from '@coral-xyz/borsh'

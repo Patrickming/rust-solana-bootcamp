@@ -95,9 +95,13 @@ export const Home: NextPage = (props) => {
 };
 ```
 
-请注意，`ConnectionProvider` 需要 `endpoint` 属性，`WalletProvider` 需要 `wallets` 属性。我们将继续使用 Devnet 集群的端点，并且由于所有主要 Solana 适配器都支持钱包标准，因此我们不需要任何特定钱包的适配器。
+请注意，`ConnectionProvider` 需要 `endpoint` 属性（指定网络），`WalletProvider` 需要 `wallets` 属性。我们将继续使用 Devnet 集群的端点，并且由于所有主要 Solana 适配器都支持钱包标准，因此我们不需要任何特定钱包的适配器。
 
 此时，您可以使用 `wallet.connect()` 进行连接，这将指示钱包提示用户是否有权查看其公钥并请求批准交易。
+
+>   并且由于所有主要 Solana 适配器都支持钱包标准，因此我们不需要任何特定钱包的适配器体现在:
+>
+> <WalletProvider wallets={wallets}>
 
 ![Screenshot of wallet connection prompt](../../assets/wallet-connect-prompt.png)
 

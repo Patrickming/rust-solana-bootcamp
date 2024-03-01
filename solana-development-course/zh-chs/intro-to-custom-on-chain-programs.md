@@ -95,7 +95,7 @@ console.log(`✅ Success! Transaction signature is: ${signature}`);
 
 # 实验 - 为 ping 计数器程序写交易
 
-我们将创建一个脚本来 ping 一个链上程序，每次 ping 时都会使计数器加一。该程序存在于 Solana Devnet 上，地址为 `ChT1B39WKLS8qUrkLvFDXMhEJ4F1XZzwUNHUt4AU9aVa`。该程序将其计数的数据存储在地址为 `Ah9K7dQ8EHaZqcAsgBW8w37yN2eAy3koFmUn4x3CJtod` 帐户，这个账户存储着计数器。
+我们将创建一个脚本来 ping 一个链上程序，每次 ping 时都会使计数器加一。该程序存在于 Solana Devnet 上，地址为 `ChT1B39WKLS8qUrkLvFDXMhEJ4F1XZzwUNHUt4AU9aVa`（program）。该程序将其计数的数据存储在地址为 `Ah9K7dQ8EHaZqcAsgBW8w37yN2eAy3koFmUn4x3CJtod` 帐户（account），这个账户存储着计数器。
 
 ## 1. 基础脚手架
 
