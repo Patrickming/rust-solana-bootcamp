@@ -46,7 +46,7 @@ struct NoteState {
 
 ### 使用 Borsh 进行序列化和反序列化
 
-就像对指令数据一样，我们需要一种机制来将 Rust 数据类型转换为字节数组，反之亦然。**序列化（Serialization）**是将对象转换为字节数组的过程。**反序列化（Deserialization）**是从字节数组重建对象的过程。
+就像对指令数据一样，我们需要一种机制来将 Rust 数据类型转换为字节数组，反之亦然。**序列化（Serialization** 是将对象转换为字节数组的过程。**反序列化（Deserialization** 是从字节数组重建对象的过程。
 
 我们将继续使用 Borsh 进行序列化和反序列化。在 Rust 中，我们可以使用 `borsh` crate 来获取 `BorshSerialize` 和 `BorshDeserialize` traits。然后，我们可以使用 `derive` 属性宏来应用这些 traits。
 
