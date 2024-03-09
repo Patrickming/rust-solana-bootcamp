@@ -136,11 +136,13 @@ solana config set --keypair ~/<FILE_PATH>
 
 您可以使用 `solana-test-validator` 命令运行本地测试验证器。此命令创建一个持续运行的进程，需要在其自己的命令行窗口中运行。
 
+> 这里如果不启动的话 本地没法运行
+
 ### 流式程序日志
 
 通常，同时打开一个新控制台并运行 `solana logs` 命令，可以帮助您观察测试验证节点相关的日志。这将创建另一个持续运行的进程，会流式传输与您配置的集群相关的日志。
 
-如果您的 CLI 配置指向 `localhost`，则日志将始终与您创建的测试验证器相关联，但您也可以从其他集群（如 Devnet 和 Mainnet Beta）中流式传输日志。当从其他集群流式传输日志时，您需要在命令中包含一个程序 ID，以限制您看到的日志仅为特定程序的日志。
+如果您的 CLI 配置指向 `localhost`，则日志将始终与您创建的测试验证器相关联（意思是localhost不需要这个），但您也可以从其他集群（如 Devnet 和 Mainnet Beta）中流式传输日志。当从其他集群流式传输日志时，您需要在命令中包含一个程序 ID，以限制您看到的日志仅为特定程序的日志。
 
 ### 密钥对
 
@@ -175,6 +177,10 @@ solana airdrop 2
 - 指向错误的集群
 
 到目前为止，我们介绍的 CLI 命令应该可以帮助您迅速解决这些问题。
+
+> 默认的密钥对地址：/root/.config/solana/id.json
+>
+> 我设置的本地密钥对地址：/root/.config/solana/id_localhost.json
 
 ## 在本地环境中开发 Solana 程序
 
@@ -218,6 +224,16 @@ crate-type = ["cdylib", "lib"]
 cargo build-bpf
 ```
 
+> ![image-20240308204349710](./assets/image-20240308204349710.png)
+>
+> - 这里得在`wsl` 里运行 然后会自动下载
+>
+> - 然后发现要`gcc`
+>
+> - 然后`sudo apt-get update`
+> - `sudo apt-get install gcc`  查看 版本`gcc -v`
+> - 然后再次运行 `cargo build-bpf`  如果报错 清除缓存`rm -rf ~/.cache/solana/*`再试
+
 该命令的输出将包含部署程序的说明，看起来类似于：
 
 ```text
@@ -232,6 +248,11 @@ The program address will default to this keypair (override with --program-id):
 ```rust
 solana program deploy <PATH>
 ```
+
+>这里在wsl里运行的时候 我们用相对路径 如果我们是在Windows文件目录下打开的话（如果是linux目录下的话就绝对路径）
+>solana program deploy hello-world\target\deploy\hello_world.so
+>
+>root@xrm:/mnt/d/web3_code/solana_learn/solana/local/hello-world/target/deploy# solana program deploy ./hello_world.so
 
 # 实验
 
@@ -365,3 +386,31 @@ solana logs | grep "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke" -A 5
 ## 完成实验了吗？
 
 将您的代码推送到 GitHub，然后[告诉我们您对这节课的看法](https://form.typeform.com/to/IPH0UGz7#answers-lesson=aa0b56d6-02a9-4b36-95c0-a817e2c5b19d)！
+
+
+
+
+
+
+
+## 注意
+
+1、 rust项目位置
+
+位置是有讲究的 因为插件可能识别不到 两种方法
+
+- vscode作为二级目录打开 就像：
+
+  - 这样![image-20240308194440973](./assets/image-20240308194440973.png)
+
+  - 而不是这样
+
+    ![image-20240308194525657](./assets/image-20240308194525657.png)
+
+- 设置 手动设置连接 注意路径
+
+  ![image-20240308194911366](./assets/image-20240308194911366.png)
+
+2. 在用示例代码的时候 因为是之前devnet的代码 所以connection什么的都得改 具体文件在`solana/DApp/hello.ts`里
+3. 这一章改了很多东西在前面教程实验什么的都得看 
+

@@ -484,3 +484,32 @@ pub fn process_instruction(
 ## 完成了实验吗？
 
 将您的代码推送到 GitHub，并[告诉我们您对本课程的看法](https://form.typeform.com/to/IPH0UGz7#answers-lesson=74a157dc-01a7-4b08-9a5f-27aa51a4346c)！
+
+
+
+
+
+## 注意
+
+1. 如果还是之前的program id 在solplayground 会部署失败 需要new一个
+
+2. 运行结果
+
+   ```sh
+   Current balance is 3.99146164
+   PDA is: 6aeEkgmJLBYjcW5myUZzYotPxAF2GWRVoWa5iQFPPZ1b
+   https://explorer.solana.com/tx/5RxLtkVCwJHiXnXiGbyKmUueERioZEiNjhZkhbb9MA9e2iUgdkEuffurSFRUuPKR91h6Xv2YvKA1EMHb9uQxCqtp?cluster=devnet
+   Finished successfull
+   ```
+
+   ![image-20240305153642505](.\assets\image-20240305153642505.png)
+
+   ![image-20240305153702539](.\assets\image-20240305153702539.png)
+
+   > [“Program consumed: 3326 of 200000 compute units” 是指在执行 Solana 程序时，程序消耗了 3326 个计算单位（compute units）。在 Solana 中，每个程序的执行都有一个计算单位的限制，这是为了防止程序执行时间过长，影响到区块链的性能](https://stackoverflow.com/questions/72268271/solana-error-on-metaplex-when-trying-to-make-auction)。
+   >
+   > 在这个例子中，200000 是这个程序的计算单位上限，而 3326 是实际消耗的计算单位。这意味着这个程序的执行没有超过 Solana 设定的计算单位上限。
+   >
+   > [如果一个程序的计算单位消耗超过了设定的上限，那么这个程序的执行就会被中断，以保护区块链的性能](https://stackoverflow.com/questions/70978928/is-there-any-way-to-increase-compute-unit-in-building-on-chain-program-of-solana)
+   
+3. program id ：`Hkc6buvun8j15ApTC3DrLRpYAqsatzsiWgoeX7LdpBR`

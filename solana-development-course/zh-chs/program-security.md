@@ -728,3 +728,13 @@ pub fn update_movie_review(
 ## 完成了实验吗？
 
 将您的代码推送到 GitHub，并[告诉我们您对这节课的看法](https://form.typeform.com/to/IPH0UGz7#answers-lesson=3dfb98cc-7ba9-463d-8065-7bdb1c841d43)！
+
+
+
+
+## 注意
+
+1. 要知道代码逻辑
+2. 抛出的错误和log会在前端提示
+3. 修改前：[Solscan](https://solscan.io/tx/58b13CPtAkD2qF6GrkzHFxf9qea8NaoHmxNdtLZY9Ntd74zrnmMzAg62SyoAKbAJZgVuqKDa7h2c1R6AEh8Ke35Q?cluster=devnet)
+4. 修改后：[Solscan](https://solscan.io/tx/5p6YLFeQj2ese7RPHr8eeCKLqRDBdyZHFmQSsRs9u5Lik8LSkyp1mDqQzUBAmHZ4chVA1MHxKM7RWoEzNFQcRcDF?cluster=devnet)

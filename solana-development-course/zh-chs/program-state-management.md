@@ -11,7 +11,7 @@ objectives:
 # 总结
 
 - 程序状态存储在其他账户中，而不是在程序本身中。
-- 程序派生地址（PDA）是从程序 ID 和一个可选的种子列表派生而来的。一旦派生完成，PDAs 随后被用作存储账户的地址。
+- 程序派生地址（PDA）**是从程序 ID 和一个可选的种子列表派生而来的**。一旦派生完成，PDAs 随后被用作存储账户的地址。
 - 创建一个账户需要计算所需的空间以及分配给新账户的相应租金。
 - 创建一个新账户需要通过对系统程序上的 `create_account` 指令进行跨程序调用（CPI）。
 - 更新账户上的数据字段需要将数据序列化（转换为字节数组）到账户中。
@@ -46,7 +46,7 @@ struct NoteState {
 
 ### 使用 Borsh 进行序列化和反序列化
 
-就像对指令数据一样，我们需要一种机制来将 Rust 数据类型转换为字节数组，反之亦然。**序列化（Serialization** 是将对象转换为字节数组的过程。**反序列化（Deserialization** 是从字节数组重建对象的过程。
+就像对指令数据一样，我们需要一种机制来将 Rust 数据类型转换为字节数组，反之亦然。**序列化（Serialization** ** **。**反序列化（Deserialization** 是从字节数组重建对象的过程。
 
 我们将继续使用 Borsh 进行序列化和反序列化。在 Rust 中，我们可以使用 `borsh` crate 来获取 `BorshSerialize` 和 `BorshDeserialize` traits。然后，我们可以使用 `derive` 属性宏来应用这些 traits。
 
@@ -75,9 +75,9 @@ struct NoteState {
 
 ### 空间和租金
 
-回想一下，在 Solana 网络上存储数据需要用户分配租金，以 lamports 的形式。新账户所需的租金数量取决于您希望为该账户分配的空间量。这意味着在创建账户之前，我们需要知道要分配多少空间。
+回想一下，在 Solana 网络上存储数据需要用户分配租金，以 lamports 的形式。**新账户所需的租金数量取决于您希望为该账户分配的空间量。这意味着在创建账户之前，我们需要知道要分配多少空间。**
 
-需要注意的是，租金更像是一笔押金。当关闭一个账户时，分配给租金的所有 lamports 都可以完全退还。此外，现在所有新账户都需要是[免租金（rent-exempt）](https://twitter.com/jacobvcreech/status/1524790032938287105)，这意味着不会随着时间的推移从账户中扣除 lamports。如果账户持有至少 2 年的租金，该账户就被视为免租金。换句话说，账户将永久存储在链上，直到所有者（owner）关闭账户并提取租金。
+需要注意的是，**租金更像是一笔押金**。当关闭一个账户时，分配给租金的所有 lamports 都可以完全退还。此外，现在所有新账户都需要是[免租金（rent-exempt）](https://twitter.com/jacobvcreech/status/1524790032938287105)，这意味着不会随着时间的推移从账户中扣除 lamports。如果账户持有至少 2 年的租金，该账户就被视为免租金。换句话说，账户将永久存储在链上，直到所有者（owner）关闭账户并提取租金。
 
 在我们的记笔记应用示例中，`NoteState` 结构指定了需要存储在账户中的三个字段：`title`、`body` 和 `id`。要计算账户需要的大小，您只需将每个字段中存储数据所需的大小相加即可。
 
@@ -94,13 +94,13 @@ let rent = Rent::get()?;
 let rent_lamports = rent.minimum_balance(account_len);
 ```
 
-### 程序派生地址（PDA）
+### ***程序派生地址（PDA）***
 
 在创建账户之前，我们还需要有一个地址来分配给该账户。对于程序能够拥有所有权的账户来说（即账户的 owner 字段为自己的程序地址），这将是使用 `find_program_address` 函数找到的程序派生地址（PDA）。
 
 正如其名称所示，PDAs 是使用程序 ID（创建账户的程序的地址）和一个可选的“种子（seeds）”列表派生而来的。可选的种子是在 `find_program_address` 函数中使用的额外输入，用于派生 PDA。用于派生 PDAs 的函数在给定相同的输入时，每次都会返回相同的地址。这使我们能够创建任意数量的 PDA 账户，并以确定性的方式找到每个账户。
 
-除了您提供用于派生 PDA 的种子之外，`find_program_address` 函数还会提供一个额外的“增量种子（bump seed）”。使 PDAs 与其他 Solana 账户地址不同的是，它们没有相应的私钥。这确保只有拥有该地址的程序才能代表 PDA 进行签名。当 `find_program_address` 函数尝试使用提供的种子派生 PDA 时，它会将数字 255 作为“增量种子”传入。如果生成的地址无效（即具有相应的私钥），则该函数会将增量种子减少 1，并使用新的增量种子派生新的 PDA。一旦找到有效的 PDA，该函数就会返回 PDA 和用于派生 PDA 的增量（bump）。
+除了您提供用于派生 PDA 的种子之外，`find_program_address` 函数还会提供一个额外的“**增量种子**（bump seed）”。使 PDAs 与其他 Solana 账户地址不同的是，**它们没有相应的私钥。这确保只有拥有该地址的程序才能代表 PDA 进行签名**。当 `find_program_address` 函数尝试使用提供的种子派生 PDA 时，它会将数字 255 作为“增量种子”传入。如果生成的地址无效（即具有相应的私钥），则该函数会将增量种子减少 1，并使用新的增量种子派生新的 PDA。**一旦找到有效的 PDA，该函数就会返回 PDA 和用于派生 PDA 的增量（bump）**。
 
 对于我们的记笔记应用程序，我们将使用笔记创建者的公钥和 ID 作为可选的种子来派生 PDA。通过这种方式派生 PDA，我们可以确定性地找到每个笔记的账户。
 
@@ -110,7 +110,7 @@ let (note_pda_account, bump_seed) = Pubkey::find_program_address(&[note_creator.
 
 ### 跨程序调用（CPI）
 
-一旦我们计算出了账户所需的租金，并找到了一个有效的 PDA 作为新账户的地址，我们最终可以创建该账户了。在我们的程序中创建一个新账户需要进行跨程序调用（Cross Program Invocation，CPI）。CPI 是一个程序调用另一个程序上的指令的过程。要在我们的程序中创建一个新账户，我们将在系统程序上调用 `create_account` 指令。
+一旦我们计算出了账户所需的租金，并找到了一个有效的 PDA 作为新账户的地址，我们最终可以创建该账户了。**在我们的程序中创建一个新账户需要进行跨程序调用（Cross Program Invocation，CPI）**。**CPI 是一个程序调用另一个程序上的指令的过程**。要在我们的程序中创建一个新账户，我们将在系统程序上调用 `create_account` 指令。
 
 CPI 可以使用 `invoke` 或 `invoke_signed` 来完成。
 
@@ -130,6 +130,8 @@ pub fn invoke_signed(
 ```
 
 在本课程中，我们将使用 `invoke_signed`。与常规签名不同，常规签名使用私钥进行签名，而 `invoke_signed` 使用可选的种子、增量种子和程序 ID 来派生一个 PDA 并签署一条指令。这是通过将派生的 PDA 与传递给指令的所有账户进行比较来完成的。如果其中的账户与 PDA 匹配，则该账户的签名字段将被设置为 true。
+
+> 没看懂
 
 程序可以通过这种方式安全地签署交易，因为 `invoke_signed` 在调用的过程中，runtime 会重新根据种子（可选种子和增量种子）和调用程序的 program ID 重新派生 PDA，如果账户与 [account_info](https://docs.rs/solana-program/latest/solana_program/program/fn.invoke_signed.html) 中的一个账户匹配，那么将认为该用户已经“签名”（signed）。因此，一个程序无法生成一个与使用另一个程序 ID 派生的 PDA 对应的匹配 PDA，以便为账户签署。
 
@@ -231,7 +233,7 @@ let system_program = next_account_info(account_info_iter)?;
 
 ## 1. 获取起始代码
 
-如果您没有完成上一课的实验室，或者只是想确保您没有遗漏任何内容，您可以参考[起始代码](https://beta.solpg.io/6295b25b0e6ab1eb92d947f7)。
+如果您没有完成上一课的实验，或者只是想确保您没有遗漏任何内容，您可以参考[起始代码](https://beta.solpg.io/6295b25b0e6ab1eb92d947f7)。
 
 我们的程序目前包括 `instruction.rs` 文件，我们用它来反序列化传递给程序入口点的 `instruction_data`。我们还完成了 `lib.rs` 文件，以至于我们可以使用 `msg!` 宏将反序列化的指令数据打印到程序日志中。
 
@@ -310,7 +312,7 @@ let system_program = next_account_info(account_info_iter)?;
 
 接下来，在我们的 `add_movie_review` 函数中，让我们独立地派生我们期望用户传入的 PDA。我们将在稍后提供派生的增量种子，所以即使 `pda_account` 应该引用相同的账户，我们仍然需要调用 `find_program_address`。
 
-请注意，我们使用初始化程序的公钥和电影标题作为可选种子来为每个新账户派生 PDA。以这种方式设置 PDA 限制了每个用户仅能为任何一个电影标题撰写一次评论。但是，它仍允许同一用户评论具有不同标题的电影，也允许不同用户评论具有相同标题的电影。
+请注意，我们使用初始化程序的公钥（用户？）和电影标题作为可选种子来为每个新账户派生 PDA。**以这种方式设置 PDA 限制了每个用户仅能为任何一个电影标题撰写一次评论。但是，它仍允许同一用户评论具有不同标题的电影，也允许不同用户评论具有相同标题的电影。**
 
 ```rust
 // Derive PDA
@@ -335,6 +337,8 @@ let rent_lamports = rent.minimum_balance(account_len);
 ## 7. 创建新账户
 
 一旦我们计算出了租金并验证了 PDA，我们就可以准备创建我们的新账户了。为了创建一个新账户，我们必须从系统程序调用 `create_account` 指令。我们使用跨程序调用（CPI）来完成这个操作，使用 `invoke_signed` 函数。我们使用 `invoke_signed` 是因为我们正在使用 PDA 创建账户，并且需要电影评论程序“签署”指令。
+
+> 这里到底在说什么
 
 ```rust
 // Create the account
@@ -406,3 +410,218 @@ msg!("state account serialized");
 ## 完成实验了吗？
 
 将你的代码推送到 GitHub，并[告诉我们你对本课程的看法](https://form.typeform.com/to/IPH0UGz7#answers-lesson=8320fc87-2b6d-4b3a-8b1a-54b55afed781)！
+
+
+
+
+
+## 注意
+
+1. 实验交易：[Transaction | 2Ew8SXhW37hj9tdXzLzQ14RYB5dYWLhFHYdr5HPz9SA9Xzu61MSfWcqUTW71RzV67SL8UJKyyzTHyYDuLVRPUzc6 | Solana](https://explorer.solana.com/tx/2Ew8SXhW37hj9tdXzLzQ14RYB5dYWLhFHYdr5HPz9SA9Xzu61MSfWcqUTW71RzV67SL8UJKyyzTHyYDuLVRPUzc6?cluster=devnet)
+
+2. 输出
+
+   Current balance is 3.99145664
+   PDA is: G23i7zXv4b7iaD7fWBHPCD3M3xsTeBpUrmnYBJAauqGU
+   https://explorer.solana.com/tx/2Ew8SXhW37hj9tdXzLzQ14RYB5dYWLhFHYdr5HPz9SA9Xzu61MSfWcqUTW71RzV67SL8UJKyyzTHyYDuLVRPUzc6?cluster=devnet
+   Finished successfully
+
+3. **直接自己再跑一遍代码就好！看注释复习**
+
+### lib
+
+```rust
+use solana_program::{
+    account_info::{next_account_info, AccountInfo},
+    borsh::try_from_slice_unchecked,
+    entrypoint,
+    entrypoint::ProgramResult,
+    msg,
+    program::invoke_signed,
+    pubkey::Pubkey,
+    system_instruction,
+    sysvar::{rent::Rent, Sysvar},
+};
+use std::convert::TryInto;
+pub mod instruction;
+pub mod state;
+use borsh::BorshSerialize;
+use instruction::MovieInstruction;
+use state::MovieAccountState;
+
+// Entry point is a function call process_instruction
+entrypoint!(process_instruction);
+
+// Inside lib.rs
+pub fn process_instruction(
+    program_id: &Pubkey,
+    accounts: &[AccountInfo],
+    instruction_data: &[u8],
+) -> ProgramResult {
+    // Unpack called
+    let instruction = MovieInstruction::unpack(instruction_data)?;
+    // Match against the data struct returned into `instruction` variable
+    match instruction {
+        MovieInstruction::AddMovieReview {
+            title,
+            rating,
+            description,
+        } => {
+            // Make a call to `add_move_review` function
+            add_movie_review(program_id, accounts, title, rating, description)
+        }
+    }
+}
+
+pub fn add_movie_review(
+    program_id: &Pubkey,
+    accounts: &[AccountInfo],
+    title: String,
+    rating: u8,
+    description: String,
+) -> ProgramResult {
+    // Logging instruction data that was passed in
+    msg!("Adding movie review...");
+    msg!("Title: {}", title);
+    msg!("Rating: {}", rating);
+    msg!("Description: {}", description);
+
+    // 得到账户
+    // Get Account iterator
+    let account_info_iter = &mut accounts.iter();
+    //一个账户数组通过单个 `accounts` 参数传递到 `add_movie_review` 函数中。为了处理我们的指令，我们需要遍历（iterate） `accounts` 并将每个账户的 `AccountInfo` 分配给它自己的变量。
+    let initializer = next_account_info(account_info_iter)?;
+    let pda_account = next_account_info(account_info_iter)?;
+    let system_program = next_account_info(account_info_iter)?;
+
+    //操作账户
+    // msg!("initializer:{:#?}", initializer); //initializer:AccountInfo {" key: EggqQXLrEfDnxX5nHPB7KxPNpXDyMyPEQaDYFyUhH8jS, owner: 11111111111111111111111111111111, is_signer: true, is_writable: true, executable: false, rent_epoch: 18446744073709551615, lamports: 3990200800, data.len: 0, .. }
+    // msg!("pda_account:{:#?}", pda_account); //其实就是下面的pda
+    // msg!("system_program:{:#?}", system_program); //111111..
+
+    // Derive PDA 得到pda和bump
+    let (pda, bump_seed) = Pubkey::find_program_address(
+        //传入的参数和前端一模一样
+        &[initializer.key.as_ref(), title.as_bytes().as_ref()],
+        program_id,
+    );
+    // msg!("pda:{:#?}", pda); 和前端算出来的pda相对应相等
+
+    //算租金 `MovieAccountState` 结构体有四个字段。我们将为 `rating` 和 `is_initialized` 每个分配 1 个字节的空间。对于 `title` 和 `description`，我们将分配空间，等于 4 字节加上字符串的长度。
+    // Calculate account size required
+    let account_len: usize = 1 + 1 + (4 + title.len()) + (4 + description.len());
+    // Calculate rent required 计算租金
+    let rent = Rent::get()?;
+    let rent_lamports = rent.minimum_balance(account_len);
+
+    // Create the account 创建账户
+    invoke_signed(
+        &system_instruction::create_account(
+            initializer.key,
+            pda_account.key,
+            rent_lamports,
+            account_len.try_into().unwrap(),
+            program_id,
+        ),
+        &[
+            initializer.clone(),
+            pda_account.clone(),
+            system_program.clone(),
+        ],
+        &[&[
+            initializer.key.as_ref(),
+            title.as_bytes().as_ref(),
+            &[bump_seed],
+        ]],
+    )?;
+
+    msg!("PDA created: {}", pda);
+
+    //使用来自我们的 `state.rs` 文件中 `MovieAccountState` 结构体的格式来更新新账户的数据字段。
+    //我们首先使用 `try_from_slice_unchecked` 从 `pda_account` 反序列化账户数据，然后设置每个字段的值。
+    //这里相当于把pda_account复制了一份 -> 反序列化 -> 填充信息 -> 序列化 -> 然后覆盖
+    msg!("unpacking state account");
+    let mut account_data =
+        try_from_slice_unchecked::<MovieAccountState>(&pda_account.data.borrow()).unwrap();
+    msg!("borrowed account data");
+
+    account_data.title = title;
+    account_data.rating = rating;
+    account_data.description = description;
+    account_data.is_initialized = true;
+
+    //将更新后的 `account_data` 序列化到我们的 `pda_account` 的数据字段中。
+    msg!("serializing account");
+    account_data.serialize(&mut &mut pda_account.data.borrow_mut()[..])?;
+    msg!("state account serialized");
+
+    Ok(())
+}
+
+```
+
+### state
+
+```rust
+use borsh::{BorshDeserialize, BorshSerialize};
+///定义我们的程序用来填充新账户的数据字段的结构体
+//定义每个新电影评论账户在其数据字段中存储的参数
+#[derive(BorshSerialize, BorshDeserialize)]
+pub struct MovieAccountState {
+    pub is_initialized: bool,
+    pub rating: u8,
+    pub title: String,
+    pub description: String,
+}
+
+```
+
+### instruction
+
+```rust
+use borsh::BorshDeserialize;
+use solana_program::program_error::ProgramError;
+
+///定义我们支持的指令并实现我们的反序列化函数。
+
+pub enum MovieInstruction {
+    AddMovieReview {
+        title: String,
+        rating: u8,
+        description: String,
+    },
+}
+//充当反序列化的中间类型
+#[derive(BorshDeserialize)]
+struct MovieReviewPayload {
+    title: String,
+    rating: u8,
+    description: String,
+}
+
+impl MovieInstruction {
+    // Unpack inbound buffer to associated Instruction
+    // The expected format for input is a Borsh serialized vector
+    pub fn unpack(input: &[u8]) -> Result<Self, ProgramError> {
+        // Split the first byte of data
+        let (&variant, rest) = input
+            .split_first() //将数组的第一个字节与数组的其余部分分开
+            .ok_or(ProgramError::InvalidInstructionData)?;
+        // `try_from_slice` is one of the implementations from the BorshDeserialization trait
+        // Deserializes instruction byte data into the payload struct
+        // 将数组的其余部分反序列化为 `MovieReviewPayload` 实例
+        let payload = MovieReviewPayload::try_from_slice(rest).unwrap();
+        // Match the first byte and return the AddMovieReview struct
+        Ok(match variant {
+            0 => Self::AddMovieReview {
+                title: payload.title,
+                rating: payload.rating,
+                description: payload.description,
+            },
+            _ => return Err(ProgramError::InvalidInstructionData),
+        })
+    }
+}
+
+```
+

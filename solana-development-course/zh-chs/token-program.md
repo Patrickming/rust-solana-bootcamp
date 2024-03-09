@@ -108,7 +108,7 @@ async function buildCreateMintTransaction(
 1. 在特定时间间隔支付租金
 2. 在初始化时存入足够的 SOL 以被视为免租金
 
-最近，第一种选项被取消，而变为在初始化新账户时必须存入足够的 SOL 以免租金。
+**最近，第一种选项被取消，而变为在初始化新账户时必须存入足够的 SOL 以免租金。**
 
 在这种情况下，我们正在为铸币厂创建一个新账户，因此我们使用 `@solana/spl-token` 库中的 `getMinimumBalanceForRentExemptMint`。然而，这个概念适用于所有账户，对于您可能需要创建的其他账户，您可以在 `Connection` 上使用更通用的 `getMinimumBalanceForRentExemption` 方法。
 
@@ -183,15 +183,17 @@ async function buildCreateTokenAccountTransaction(
 
 ### 关联代币账户
 
-关联代币账户（associated token account）是一个代币账户，其地址是通过所有者的公钥和一个铸币厂来派生的。关联代币账户提供了一种确定性的方法，用于找到由特定 `publicKey` 拥有的特定铸币厂的代币账户。
+关联代币账户（associated token account `ATA`）是一个代币账户，**其地址是通过所有者的公钥和一个铸币厂来派生的**。关联代币账户提供了一种确定性的方法，用于找到由特定 `publicKey` 拥有的特定铸币厂的代币账户。
 
 大多数情况下，您创建代币账户时，希望它是一个关联代币账户。
-- 如果不是关联代币账户，用户可能会拥有属于同一铸币厂的许多代币账户，导致不知道要将代币发送到哪里。
-- 关联代币账户允许用户将代币发送给另一个用户，如果接收方尚未拥有该铸币厂的代币账户。
+- **如果不是关联代币账户，用户可能会拥有属于同一铸币厂的许多代币账户，导致不知道要将代币发送到哪里。**
+- **关联代币账户允许用户将代币发送给另一个用户，如果接收方尚未拥有该铸币厂的代币账户。**
 
 ![ATAs are PDAs](../../assets/atas-are-pdas.svg)
 
-和上面类似, 你可以创建一个关联代币账户,通过使用 `spl-token` 库的 `createAssociatedTokenAccount` 函数。
+> 这个图展现原理 十分重要
+
+上面类似, 你可以创建一个关联代币账户,通过使用 `spl-token` 库的 `createAssociatedTokenAccount` 函数。
 
 ```tsx
 const associatedTokenAccount = await createAssociatedTokenAccount(
@@ -294,7 +296,7 @@ async function buildMintToTransaction(
 
 ## 转移代币
 
-SPL-Token 转移要求发送方和接收方都必须拥有铸币厂的代币账户。代币从发送方的代币账户转移到接收方的代币账户。
+SPL-Token **转移要求发送方和接收方都必须拥有铸币厂的代币账户。代币从发送方的代币账户转移到接收方的代币账户。**
 
 在获取接收方的关联代币账户时，您可以使用 `getOrCreateAssociatedTokenAccount` 确保其代币账户在转移之前已存在。只需记住，如果该账户尚不存在，此函数将创建该账户，并且交易的付款人将被扣除创建账户所需的 lamports。
 
@@ -315,8 +317,8 @@ const transactionSignature = await transfer(
 
 - `connection` - 连接到集群的 JSON-RPC 连接
 - `payer` - 交易的付款人账户
-- `source` - 发送代币的代币账户
-- `destination` - 接收代币的代币账户
+- `source` - 发送代币的**代币账户**
+- `destination` - 接收代币的**代币账户**
 - `owner` - `source` 代币账户的所有者账户
 - `amount` - 要转移的代币数量
 
@@ -398,7 +400,7 @@ async function buildBurnTransaction(
 
 ## 批准委托
 
-批准委托（approve delegate）是代币账户授权另一个账户转移或销毁代币的过程。当使用委托时，代币账户的权限仍由原始所有者控制。委托账户可以转移或销毁的代币的最大数量在代币账户的所有者批准委托时指定。请注意，一个代币账户在任何给定时间只能关联一个委托账户。
+批准委托（approve delegate）是代币账户授权另一个账户转移或销毁代币的过程。当使用委托时，代币账户的权限仍由原始所有者控制。委托账户可以转移或销毁的代币的最大数量在代币账户的所有者批准委托时指定。请注意，**一个代币账户在任何给定时间只能关联一个委托账户**。
 
 要使用 `spl-token` 库批准委托，您可以使用 `approve` 函数。
 
@@ -417,8 +419,8 @@ const transactionSignature = await approve(
 
 - `connection` - 连接到集群的 JSON-RPC 连接
 - `payer` - 交易的付款人账户
-- `account` - 要委托代币的代币账户
-- `delegate` - 所有者授权进行代币转移或销毁的账户
+- `account` - 要委托代币的代币账户 -  `from`
+- `delegate` - 所有者授权进行代币转移或销毁的账户 - `to`
 - `owner` - 代币账户的所有者账户
 - `amount` - 委托账户可以转移或销毁的代币的最大数量
 
@@ -1090,3 +1092,86 @@ async function main() {
 ## 完成了实验吗？
 
 将你的代码推送到 GitHub，并[告诉我们你对这节课的想法](https://form.typeform.com/to/IPH0UGz7#answers-lesson=72cab3b8-984b-4b09-a341-86800167cfc7)！
+
+
+
+
+
+## 注意
+
+1. 不要在他项目工程里实践 要自己创建个文件夹实践 代码文件在`solana\solana-token-client`中
+
+- 运行输出
+
+```sh
+Current balance is 1.9970568
+Token Mint: https://explorer.solana.com/address/BdKPE7Y4CsTLGZb3WUXbhAshNWbrvAgv4asQJMXzf4Ru?cluster=devnet
+Token Account:  {
+  address: PublicKey [PublicKey(F9ZP2rGFV8h5UkvPWrMsobcbdCrBQSmJSqzGqiYqaA4i)] {
+    _bn: <BN: d234e01e8b43a03e8245df045c95214799a02888b4a7151aeae826e0c30c50e3>
+  },
+  mint: PublicKey [PublicKey(BdKPE7Y4CsTLGZb3WUXbhAshNWbrvAgv4asQJMXzf4Ru)] {
+    _bn: <BN: 9de290793f936c6d6f8527bba4e64a6a41e571717c82fc6c32c490b8f13bc6d0>
+  },
+  owner: PublicKey [PublicKey(EggqQXLrEfDnxX5nHPB7KxPNpXDyMyPEQaDYFyUhH8jS)] {
+    _bn: <BN: cb529f69290d2eb900fcdf3bc5409e92b86353b98d053f394b04ebcfea12ee79>
+  },
+  amount: 0n,
+  delegate: null,
+  delegatedAmount: 0n,
+  isInitialized: true,
+  isFrozen: false,
+  isNative: false,
+  rentExemptReserve: null,
+  closeAuthority: null,
+  tlvData: <Buffer >
+}
+Token Account: https://explorer.solana.com/address/F9ZP2rGFV8h5UkvPWrMsobcbdCrBQSmJSqzGqiYqaA4i?cluster=devnet
+Mint Token Transaction: https://explorer.solana.com/tx/5uP15FaY3yZazuWfsA66naD3RuMtfd2bhjXZz5HFiwUWQtaoiVzQoFWjG91QdPx1wCHSYWVZMxNBLgq1FNcWHxbn?cluster=devnet
+Approve Delegate Transaction: https://explorer.solana.com/tx/2XSgxT9XjncjdbCLMTM9UGf869w5LutVSXGHEe8uQKmWogVrwPc5ad8tCFhAEafXSCZ3NJ7uNKf1iqesvAfrxV9a?cluster=devnet
+Token Account:  {
+  address: PublicKey [PublicKey(AjbaMRh8tvt9kMjrbYK3vSdDsEsacnUjLfaYyMEb9sKX)] {
+    _bn: <BN: 90a2aba1ce5d4ced1d783e161f7edc0af0b9c0bf860c3fccac8a71bf61312dba>
+  },
+  mint: PublicKey [PublicKey(BdKPE7Y4CsTLGZb3WUXbhAshNWbrvAgv4asQJMXzf4Ru)] {
+    _bn: <BN: 9de290793f936c6d6f8527bba4e64a6a41e571717c82fc6c32c490b8f13bc6d0>
+  },
+  owner: PublicKey [PublicKey(CZsGcNu14y9AqTRtg5jh17x8Mp3ZZSKWZ3yWTo6BLTu9)] {
+    _bn: <BN: abdbfb487e524a2ced9ef130f448a8286f20575998c1c421ba1e9a1a192e76b0>
+  },
+  amount: 0n,
+  delegate: null,
+  delegatedAmount: 0n,
+  isInitialized: true,
+  isFrozen: false,
+  isNative: false,
+  rentExemptReserve: null,
+  closeAuthority: null,
+  tlvData: <Buffer >
+}
+Token Account: https://explorer.solana.com/address/AjbaMRh8tvt9kMjrbYK3vSdDsEsacnUjLfaYyMEb9sKX?cluster=devnet
+Transfer Transaction: https://explorer.solana.com/tx/63LabY86DzV16LM72o1HZ9MUcetnrZ4BD3JzHcxPczsv16B1HJimdid3XKf2PH3BGQyjENV45RNSuSn6wuA2V8qZ?cluster=devnet
+Revote Delegate Transaction: https://explorer.solana.com/tx/3sqM89mVDtZTFEKh1LhFwc3mf5f3R6uowJ3xAmT9mbJxgFN1oKKvC5mdiqdqNrfuf6KsnXAkky4y6jRrLikbxpqx?cluster=devnet
+Burn Transaction: https://explorer.solana.com/tx/2Lu2XDztqcjkktWpKknzx54VJHvouEcqmfXQvoBgkSRfxqGLKuXBTxq53GCiyrFcpfJwNHAWwr2TuCbdQj6PtiDH?cluster=devnet
+-----------------Finished successfully---------------
+```
+
+理一下
+
+- Token Mint：`BdKPE7Y4CsTLGZb3WUXbhAshNWbrvAgv4asQJMXzf4Ru`
+
+- **from** Account: `EggqQXLrEfDnxX5nHPB7KxPNpXDyMyPEQaDYFyUhH8jS`
+
+- **from** Token Account: `F9ZP2rGFV8h5UkvPWrMsobcbdCrBQSmJSqzGqiYqaA4i`
+
+- **to** Account: `CZsGcNu14y9AqTRtg5jh17x8Mp3ZZSKWZ3yWTo6BLTu9`
+
+- **to** Token Account: `AjbaMRh8tvt9kMjrbYK3vSdDsEsacnUjLfaYyMEb9sKX`
+
+- delegate Account: `6BV4Qvjs1rn7T5d7xeCZ5Mi7ow9mQ4kANSADwjJ9q87H`
+
+- **转账交易** 
+
+  ![image-20240303133336707](.\assets\image-20240303133336707.png)
+
+  > 注意`signer`是谁 注意交易逻辑
